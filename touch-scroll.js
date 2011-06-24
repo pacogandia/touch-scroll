@@ -13,7 +13,7 @@
 		momentumTime: 300,
 		iPadMomentumDamp: 0.95,
 		iPadMomentumTime: 1200,
-		ignoreTags: ['select', 'input', 'textarea']
+		touchTags: ['select', 'input', 'textarea']
 	};
 	
 	// Define methods
@@ -21,6 +21,8 @@
 		
 		init: function(options) {
 			return this.each(function() {
+				
+				var o = $.extend(defaults, options);
 				
 				// Prevent double-init, just update instead
 				if (!!this._init) {
@@ -30,7 +32,6 @@
 				
 				// Define element variables
 				var $this = $(this),
-					o = $.extend(defaults, options),
 					scrollY = -o.y,
 					touchY = 0,
 					movedY = 0,
@@ -251,11 +252,11 @@
 				
 				// Perform a touch start event
 				function touchStart(e) {
-					// Ignore touch events on certain HTML tags
-					if ($.inArray(e.target.tagName.toLowerCase(), o.ignoreTags) >= 0) {
+					// Allow certain HTML tags to receive touch events
+					if ($.inArray(e.target.tagName.toLowerCase(), o.touchTags) !== -1) {
 						return;
 					}
-										
+					
 					// Stop the default touches
 					e.preventDefault();
 					e.stopPropagation();
