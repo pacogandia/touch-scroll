@@ -12,7 +12,8 @@
 		momentumDamp: 0.9,
 		momentumTime: 300,
 		iPadMomentumDamp: 0.95,
-		iPadMomentumTime: 1200
+		iPadMomentumTime: 1200,
+		ignoreTags: ['select', 'input', 'textarea']
 	};
 	
 	// Define methods
@@ -250,11 +251,11 @@
 				
 				// Perform a touch start event
 				function touchStart(e) {
-					// Allow SELECT and INPUT elements to receive touch events
-					if (e.target.tagName === 'SELECT' || e.target.tagName === 'INPUT') {
+					// Ignore touch events on certain HTML tags
+					if ($.inArray(e.target.tagName.toLowerCase(), o.ignoreTags) >= 0) {
 						return;
 					}
-					
+										
 					// Stop the default touches
 					e.preventDefault();
 					e.stopPropagation();
