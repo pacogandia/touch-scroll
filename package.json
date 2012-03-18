@@ -1,0 +1,15 @@
+{
+  "name": "touch-scroll",
+  "description": "touchScroll is a lightweight jQuery plugin that enables inline scrollable content in mobile Safari on iOS, and other WebKit, touch-based browsers on Android.",
+  "version": "1.0.0",
+  "author": "Neave Interactive <github: neave>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/znetstar/touch-scroll"
+  },
+  "dependencies": {
+    "jQuery": "latest"
+  },
+  "main": "./node.js",
+  "ender": "./ender.js"
+}
